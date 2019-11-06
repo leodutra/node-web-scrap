@@ -1,13 +1,10 @@
-const puppeteer = require('puppeteer')
-
 class PageScraper {
-    constructor(url) {
+    constructor(url, browser) {
         this.url = url
-        this.browser = null
+        this.browser = browser
         this.page = null
     }
     async load(onPageLoad) {
-        this.browser = await puppeteer.launch()
         this.page = await this.browser.newPage()
         if (typeof onPageLoad == 'function') {
             this.page.on('load', onPageLoad)
@@ -21,10 +18,10 @@ class PageScraper {
         return this.page.evaluate(evaluate, ...args)
     }
     async unload() {
-        if (this.browser) {
-            this.browser.close()
+        if (this.page) {
+            await this.page.close()
+            this.page = null
         }
-        this.browser = this.page = null
     }
 }
 
