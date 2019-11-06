@@ -15,10 +15,15 @@ class PageScraper {
         return this.page.goto(this.url)
     }
     async evaluate(evaluate, ...args) {
+        if (!this.page) {
+            throw new Error(`Please ${this.load.name}() ${PageScraper.name} before calling ${this.evaluate.name}().`)
+        }
         return this.page.evaluate(evaluate, ...args)
     }
     async unload() {
-        this.browser.close()
+        if (this.browser) {
+            this.browser.close()
+        }
         this.browser = this.page = null
     }
 }
