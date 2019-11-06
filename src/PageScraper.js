@@ -17,7 +17,7 @@ class PageScraper {
     async evaluate(evaluate, ...args) {
         return this.page.evaluate(evaluate, ...args)
     }
-    async destroy() {
+    async unload() {
         this.browser.close()
         this.browser = this.page = null
     }
