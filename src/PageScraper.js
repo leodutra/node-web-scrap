@@ -8,11 +8,11 @@ class PageScraper {
     }
     async load() {
         this.browser = await puppeteer.launch()
-        this.page = await browser.newPage()
+        this.page = await this.browser.newPage()
         return this.page.goto(this.url)
     }
     async evaluate(evaluate, ...args) {
-        return page.evaluate(evaluate, ...args)
+        return this.page.evaluate(evaluate, ...args)
     }
     async destroy() {
         this.browser.close()
