@@ -26,7 +26,7 @@ class SourceScraper {
         return cssText.replace(/\burl\(['"]?([^)]+?)['"]?\)/, '$1')
     }
 
-    async load(relativeUrl) {
+    async load({ relativeUrl } = {}) {
         const url = new URL(relativeUrl || '', this.url)
         this._cheerio = cheerio.load(
             (await got(url, { 
