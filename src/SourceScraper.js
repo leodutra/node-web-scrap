@@ -38,6 +38,10 @@ class SourceScraper {
         )
         return this
     }
+
+    async unload() {
+        this._cheerio = null
+    }
     
     get $() {
         if (this._cheerio) {
