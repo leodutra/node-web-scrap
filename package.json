@@ -24,7 +24,7 @@
   "homepage": "https://github.com/leodutra/node-web-scrap#readme",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
-    "got": "^9.6.0",
+    "got": "^11.8.5",
     "node-utils": "git+ssh://git@github.com/leodutra/node-utils.git",
     "puppeteer": "^2.0.0",
     "tough-cookie": "^3.0.1"
